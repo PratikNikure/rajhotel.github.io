@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pratik</title>
+</head>
+<body>
+    <form action="index.html" method="post" class="contact-form" name="google-sheet">
+        <div class="form-group">
+            <input type="text" id="contact_name" name="Firstname" class="form-control" placeholder="Name"  required/>
+        </div>
+        <div class="form-group">
+            <input type="email" id="contact_email" name="Email" class="form-control" placeholder="Email"  required/>
+        </div>
+        <div class="form-group">
+            <input type="tel" id="contact_subject" name="Phone" class="form-control" placeholder="Phone"  required/>
+        </div>
+        <div class="form-group">
+            <!-- <textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Message" required></textarea> -->
+            <input type="number" id="contact_message" class="form-control" name="Rooms" placeholder="Reuired Rooms">
+        </div>
+        <!-- <button type="submit" class="btn btn-primary tm-btn-primary">Send Message Now</button> -->
+        
+
+        <div class="form-group tm-form-element tm-form-element-50">
+            <!-- <i class="fa fa-calendar fa-2x tm-form-element-icon"></i> -->
+            <input name="check-in" type="text" class="form-control" id="inputCheckIn" placeholder="Check In">
+        </div>
+        <div class="form-group tm-form-element tm-form-element-50">
+            <!-- <i class="fa fa-calendar fa-2x tm-form-element-icon"></i> -->
+            <input name="check-out" type="text" class="form-control" id="inputCheckOut" placeholder="Check Out">
+        </div>
+        <!-- <input type="Submit" class="btn btn-primary tm-btn-primary" value="submit" name="submit"> -->
+        <button type="submit" class="btn btn-primary tm-btn-primary" name="submit">Submit</button>
+    </form>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxJxvRaXwdMAReezhhRGJBjSnfDB7dLIlMVn3KMB9dVW8GbHGE7HIl254dbvA70es71/exec'
+        const form = document.forms['google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'post', body: new FormData(form)})
+            .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
